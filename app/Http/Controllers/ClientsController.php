@@ -67,4 +67,26 @@ class ClientsController extends Controller
 
         return redirect()->route('clients.index')->with('success', 'Cliente creado exitosamente.');
     }
+
+    public function update(Request $request, $id)
+    {
+        $client = Client::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'lastName' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'curp' => 'required',
+            'address' => 'required',
+            'age' => 'required',
+            'status' => 'required',
+        ]);
+
+        $client->update($validatedData);
+
+        return redirect()->route('clients.index')->with('success', 'Cliente actualizado exitosamente.');
+    }
+
+
 }

@@ -60,4 +60,43 @@ public function store(Request $request)
     return redirect()->route('requests.index')->with('success', 'Pedido creado exitosamente.');
 }
 
+public function update(Request $request, $id)
+{
+    $validatedData = $request->validate([
+        'client_id' => 'required',
+        'product' => 'required',
+        'price' => 'required',
+        'amount' => 'required',
+        'discount' => 'required',
+        'status' => 'required',
+    ]);
+
+    $price = $validatedData['price'];
+    $amount = $validatedData['amount'];
+    $discount = $validatedData['discount'];
+
+    $subtotal = $price * $amount;
+    $discountAmount = ($discount / 100) * $subtotal;
+    $total = $subtotal - $discountAmount;
+
+    $user_email = Auth::user()->email;
+    $executive = Executive::where('email', $user_email)->first();
+    $executive_id = $executive->id;
+
+    $pedido = Pedido::findOrFail($id);
+    $pedido->update([
+        'client_id'    => $validatedData['client_id'],
+        'executive_id' => $executive_id,
+        'product' => $validatedData['product'],
+        'price' => $price,
+        'amount' => $amount,
+        'total' => $total,
+        'status' => $validatedData['status'],
+
+    ]);
+
+    return redirect()->route('requests.index')->with('success', 'Pedido actualizado exitosamente.');
+}
+
+
 }

@@ -49,6 +49,7 @@
                     <th scope="col">Cantidad</th>
                     <th scope="col">Total</th>
                     <th scope="col">Estatus</th>
+                    <th scope="col">Editar</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -64,7 +65,9 @@
                       <td>{{$request->amount}}</td>
                       <td>{{$request->total}}</td>
                       <td>{{$request->status}}</td>
+                      <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#requestUpdate">Editar</button></td>
                     </tr>
+                    @include('modals.updateRequest')
                 @endforeach
                 </tbody>
               </table>

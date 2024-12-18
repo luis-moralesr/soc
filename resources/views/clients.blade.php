@@ -69,9 +69,10 @@
                     @endif
                       <td>{{$client->status}}</td>
                       <td>
-                        <button class="btn btn-primary">Editar</button>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#clientUpdate">Editar</button>
                       </td>
                     </tr>
+                    @include('modals.updateClient')
                 @endforeach
                 </tbody>
               </table>
@@ -82,24 +83,3 @@
 @include('modals.newClient')
 @endsection
 
-{{--
-@foreach ($clients as $client)
-<tr class="expandable-row" id="row-{{ $client->cli_id }}">
-    <td data-label="ID">{{ $client->cli_id }}</td>
-    <td data-label="Nombre">{{ $client->name }}</td>
-    <td data-label="Dirección">{{ $client->direction }}</td>
-    <td data-label="Teléfono">{{ $client->phoneCel }}</td>
-    <td data-label="Email">{{ $client->email }}</td>
-    <td data-label="Editar">
-        <button class="btn btn-primary toggle-btn" data-bs-toggle="modal" data-bs-target="#actualizar{{ $client->cli_id }}">
-            <i class="bi bi-pencil-square"></i>
-        </button>
-    </td>
-    <td data-label="Detalles">
-        <button class="btn btn-primary toggle-details-btn" onclick="toggleDetails({{ $client->cli_id }})">
-            <i class="bi bi-eye"></i>
-        </button>
-    </td>
-</tr>
-@include('modals.updateClient') <!-- Modal para editar cliente -->
-@endforeach --}}
