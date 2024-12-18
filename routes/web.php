@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\ExcecutivesController;
+use App\Http\Controllers\RequestsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +23,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('clients',ClientsController::class);
+Route::resource('executives',ExcecutivesController::class);
+Route::resource('requests',RequestsController::class);

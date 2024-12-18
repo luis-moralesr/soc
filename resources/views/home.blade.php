@@ -5,16 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                <div class="card-body d-flex justify-content-around">
+                <a href="{{asset('executives')}}" class="btn btn-primary">Ejecutivos</a>
+                <a href="{{asset('clients')}}" class="btn btn-primary">Clientes</a>
+                <a href="{{asset('requests')}}" class="btn btn-primary">Pedidos</a>
                 </div>
             </div>
         </div>
