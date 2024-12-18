@@ -77,7 +77,10 @@ class ClientsController extends Controller
             'lastName' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'curp' => 'required',
+            'curp' => [
+                'required',
+                'regex:/^[A-Z]{4}\d{6}[HM](?:AS|BC|BS|CC|CL|CM|CS|CH|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[A-Z]{3}[A-Z\d]\d$/'
+            ],
             'address' => 'required',
             'age' => 'required',
             'status' => 'required',
