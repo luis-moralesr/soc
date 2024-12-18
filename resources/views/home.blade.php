@@ -6,7 +6,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body d-flex justify-content-around">
-                <a href="{{asset('executives')}}" class="btn btn-primary">Ejecutivos</a>
+                    @if (Auth::check() && Auth::user()->rol === 'admin')
+                        <a href="{{asset('executives')}}" class="btn btn-primary">Ejecutivos</a>
+                    @endif
                 <a href="{{asset('clients')}}" class="btn btn-primary">Clientes</a>
                 <a href="{{asset('requests')}}" class="btn btn-primary">Pedidos</a>
                 </div>

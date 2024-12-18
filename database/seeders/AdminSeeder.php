@@ -17,13 +17,22 @@ class AdminSeeder extends Seeder
         if (!User::where('email', 'luis@gmail.com')->exists()) {
             User::create([
                 'name' => 'Luis Ángel',
-                'lastName' => 'Morales Romero',
                 'email' => 'luis@gmail.com',
-                'company' => 'SOC Asesores',
-                'state' => 'Mexico',
                 'password' => Hash::make('asesores'),
-                'rol' => 'admin',
+                'rol'=>'admin',
             ]);
+
+
+            // User::create([
+            //     'name' => 'Luis Ángel',
+            //     'lastName' => 'Morales Romero',
+            //     'email' => 'luis@gmail.com',
+            //     'company' => 'SOC Asesores',
+            //     'state' => 'Mexico',
+            //     'password' => Hash::make('asesores'),
+            //     'rol' => 'admin',
+            // ]);
+
         }
     }
 }
